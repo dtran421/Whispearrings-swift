@@ -1,0 +1,22 @@
+[
+    {
+        "id": 1,
+        "value": "\"Be present\"",
+        "times": [
+            "7:00",
+            "8:00",
+            "11:56"
+        ],
+        "user": "Bob"
+    },
+    {
+        "id": 2,
+        "value": "\"Sit up straight\"",
+        "times": [
+            "10:00",
+            "11:00",
+            "2:15"
+        ],
+        "user": "Bob"
+    }
+]

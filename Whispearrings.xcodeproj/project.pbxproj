@@ -9,21 +9,31 @@
 /* Begin PBXBuildFile section */
 		F5A4057C24AFC73400B9520A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A4057B24AFC73400B9520A /* AppDelegate.swift */; };
 		F5A4057E24AFC73400B9520A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A4057D24AFC73400B9520A /* SceneDelegate.swift */; };
-		F5A4058024AFC73400B9520A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A4057F24AFC73400B9520A /* ContentView.swift */; };
+		F5A4058024AFC73400B9520A /* WhispersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A4057F24AFC73400B9520A /* WhispersView.swift */; };
 		F5A4058224AFC73900B9520A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F5A4058124AFC73900B9520A /* Assets.xcassets */; };
 		F5A4058524AFC73900B9520A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F5A4058424AFC73900B9520A /* Preview Assets.xcassets */; };
 		F5A4058824AFC73900B9520A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5A4058624AFC73900B9520A /* LaunchScreen.storyboard */; };
+		F5A4059224AFCAA200B9520A /* Whisper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A4059124AFCAA200B9520A /* Whisper.swift */; };
+		F5A4059624AFCCB000B9520A /* whisperData.json in Resources */ = {isa = PBXBuildFile; fileRef = F5A4059524AFCCB000B9520A /* whisperData.json */; };
+		F5A4059824AFCDE100B9520A /* Whisper Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A4059724AFCDE100B9520A /* Whisper Card.swift */; };
+		F5A4059A24AFD11900B9520A /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A4059924AFD11900B9520A /* Data.swift */; };
+		F5A4059C24AFD67800B9520A /* WhispersList.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A4059B24AFD67800B9520A /* WhispersList.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		F5A4057824AFC73400B9520A /* Whispearrings.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Whispearrings.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5A4057B24AFC73400B9520A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F5A4057D24AFC73400B9520A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		F5A4057F24AFC73400B9520A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		F5A4057F24AFC73400B9520A /* WhispersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhispersView.swift; sourceTree = "<group>"; };
 		F5A4058124AFC73900B9520A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F5A4058424AFC73900B9520A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		F5A4058724AFC73900B9520A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F5A4058924AFC73900B9520A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F5A4059124AFCAA200B9520A /* Whisper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Whisper.swift; sourceTree = "<group>"; };
+		F5A4059524AFCCB000B9520A /* whisperData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = whisperData.json; sourceTree = "<group>"; };
+		F5A4059724AFCDE100B9520A /* Whisper Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Whisper Card.swift"; sourceTree = "<group>"; };
+		F5A4059924AFD11900B9520A /* Data.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Data.swift; path = ../../../../../Downloads/BuildingListsAndNavigation/StartingPoint/Landmarks/Landmarks/Models/Data.swift; sourceTree = "<group>"; };
+		F5A4059B24AFD67800B9520A /* WhispersList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhispersList.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,13 +66,17 @@
 		F5A4057A24AFC73400B9520A /* Whispearrings */ = {
 			isa = PBXGroup;
 			children = (
+				F5A4059424AFCC7B00B9520A /* Resources */,
+				F5A4059024AFCA4400B9520A /* Models */,
 				F5A4057B24AFC73400B9520A /* AppDelegate.swift */,
 				F5A4057D24AFC73400B9520A /* SceneDelegate.swift */,
-				F5A4057F24AFC73400B9520A /* ContentView.swift */,
+				F5A4057F24AFC73400B9520A /* WhispersView.swift */,
+				F5A4059B24AFD67800B9520A /* WhispersList.swift */,
 				F5A4058124AFC73900B9520A /* Assets.xcassets */,
 				F5A4058624AFC73900B9520A /* LaunchScreen.storyboard */,
 				F5A4058924AFC73900B9520A /* Info.plist */,
 				F5A4058324AFC73900B9520A /* Preview Content */,
+				F5A4059724AFCDE100B9520A /* Whisper Card.swift */,
 			);
 			path = Whispearrings;
 			sourceTree = "<group>";
@@ -73,6 +87,23 @@
 				F5A4058424AFC73900B9520A /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		F5A4059024AFCA4400B9520A /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F5A4059924AFD11900B9520A /* Data.swift */,
+				F5A4059124AFCAA200B9520A /* Whisper.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		F5A4059424AFCC7B00B9520A /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				F5A4059524AFCCB000B9520A /* whisperData.json */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -133,6 +164,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F5A4059624AFCCB000B9520A /* whisperData.json in Resources */,
 				F5A4058824AFC73900B9520A /* LaunchScreen.storyboard in Resources */,
 				F5A4058524AFC73900B9520A /* Preview Assets.xcassets in Resources */,
 				F5A4058224AFC73900B9520A /* Assets.xcassets in Resources */,
@@ -147,8 +179,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				F5A4057C24AFC73400B9520A /* AppDelegate.swift in Sources */,
+				F5A4059A24AFD11900B9520A /* Data.swift in Sources */,
+				F5A4059C24AFD67800B9520A /* WhispersList.swift in Sources */,
 				F5A4057E24AFC73400B9520A /* SceneDelegate.swift in Sources */,
-				F5A4058024AFC73400B9520A /* ContentView.swift in Sources */,
+				F5A4059824AFCDE100B9520A /* Whisper Card.swift in Sources */,
+				F5A4059224AFCAA200B9520A /* Whisper.swift in Sources */,
+				F5A4058024AFC73400B9520A /* WhispersView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
