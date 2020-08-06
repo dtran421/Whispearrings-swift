@@ -7,14 +7,72 @@
 //
 
 import UIKit
+import CoreData
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
+    
+    lazy var persistentContainer: NSPersistentContainer = {
+        let container = NSPersistentContainer(name: "Whispearrings")
+        container.loadPersistentStores { description, error in
+            if let error = error {
+                print(error)
+            }
+        }
+        return container
+    }()
+    
+    func saveContext () {
+        let context = persistentContainer.viewContext
+        if context.hasChanges {
+            do {
+                try context.save()
+            } catch {
+                print(error)
+            }
+        }
+    }
 
-
-
+    func preloadData() {
+        let managedObjectContext = persistentContainer.viewContext
+        
+        let queueArray = QueueArray(context: managedObjectContext)
+        
+        for whisper in whisperData {
+            let newWhisper = Whisper(context: managedObjectContext)
+            
+            newWhisper.id = UUID()
+            newWhisper.value = whisper.value
+            newWhisper.type = "Default"
+            newWhisper.soundFile = whisper.soundFile
+            
+            queueArray.addToQueue(newWhisper)
+        }
+        
+        let queueSettings = QueueSettings(context: managedObjectContext)
+        
+        queueSettings.timing = 2
+        queueSettings.randomTiming = false
+        queueSettings.shufflePlay = false
+        queueSettings.repeatPlay = false
+                        
+        do {
+            try managedObjectContext.save()
+            print("saved!")
+        } catch let error as NSError {
+            print("Could not save. \(error), \(error.userInfo)")
+        }
+    }
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        let defaults = UserDefaults.standard
+        let isPreloaded = defaults.bool(forKey: "isPreloaded")
+        if !isPreloaded {
+            preloadData()
+            defaults.set(true, forKey: "isPreloaded")
+        }
+        
         return true
     }
 

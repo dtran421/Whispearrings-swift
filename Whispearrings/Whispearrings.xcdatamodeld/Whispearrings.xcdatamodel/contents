@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17162.0.1" systemVersion="19F101" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="QueueArray" representedClassName=".QueueArray" syncable="YES">
+        <relationship name="queue" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Whisper" inverseName="queue" inverseEntity="Whisper"/>
+    </entity>
+    <entity name="QueueSettings" representedClassName=".QueueSettings" syncable="YES">
+        <attribute name="randomTiming" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="repeatPlay" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="shufflePlay" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="timing" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+    </entity>
+    <entity name="Time" representedClassName=".Time" syncable="YES">
+        <attribute name="time" optional="YES" attributeType="String"/>
+        <relationship name="whisper" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Whisper" inverseName="times" inverseEntity="Whisper"/>
+    </entity>
+    <entity name="Whisper" representedClassName=".Whisper" syncable="YES">
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="soundFile" optional="YES" attributeType="String"/>
+        <attribute name="type" optional="YES" attributeType="String"/>
+        <attribute name="value" optional="YES" attributeType="String"/>
+        <relationship name="queue" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="QueueArray" inverseName="queue" inverseEntity="QueueArray"/>
+        <relationship name="times" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Time" inverseName="whisper" inverseEntity="Time"/>
+    </entity>
+    <elements>
+        <element name="QueueArray" positionX="-27" positionY="72" width="128" height="58"/>
+        <element name="QueueSettings" positionX="-36" positionY="45" width="128" height="103"/>
+        <element name="Time" positionX="-54" positionY="18" width="128" height="73"/>
+        <element name="Whisper" positionX="-63" positionY="-18" width="128" height="133"/>
+    </elements>
+</model>

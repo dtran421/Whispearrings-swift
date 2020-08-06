@@ -3,37 +3,118 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		F5A4057C24AFC73400B9520A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A4057B24AFC73400B9520A /* AppDelegate.swift */; };
-		F5A4057E24AFC73400B9520A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A4057D24AFC73400B9520A /* SceneDelegate.swift */; };
-		F5A4058024AFC73400B9520A /* WhispersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A4057F24AFC73400B9520A /* WhispersView.swift */; };
-		F5A4058224AFC73900B9520A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F5A4058124AFC73900B9520A /* Assets.xcassets */; };
 		F5A4058524AFC73900B9520A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F5A4058424AFC73900B9520A /* Preview Assets.xcassets */; };
-		F5A4058824AFC73900B9520A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5A4058624AFC73900B9520A /* LaunchScreen.storyboard */; };
-		F5A4059224AFCAA200B9520A /* Whisper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A4059124AFCAA200B9520A /* Whisper.swift */; };
-		F5A4059624AFCCB000B9520A /* whisperData.json in Resources */ = {isa = PBXBuildFile; fileRef = F5A4059524AFCCB000B9520A /* whisperData.json */; };
-		F5A4059824AFCDE100B9520A /* Whisper Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A4059724AFCDE100B9520A /* Whisper Card.swift */; };
-		F5A4059A24AFD11900B9520A /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A4059924AFD11900B9520A /* Data.swift */; };
-		F5A4059C24AFD67800B9520A /* WhispersList.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A4059B24AFD67800B9520A /* WhispersList.swift */; };
+		F5C9B5E524DC776F00817901 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C9B5E324DC776F00817901 /* SceneDelegate.swift */; };
+		F5C9B5E624DC776F00817901 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C9B5E424DC776F00817901 /* AppDelegate.swift */; };
+		F5C9B5E724DC776F00817901 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C9B5E224DC776E00817901 /* ContentView.swift */; };
+		F5C9B5EC24DC77A400817901 /* Whispearrings.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F5C9B5EA24DC77A400817901 /* Whispearrings.xcdatamodeld */; };
+		F5C9B60424DC788500817901 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C9B5F324DC788400817901 /* Data.swift */; };
+		F5C9B60624DC788500817901 /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C9B5F524DC788400817901 /* AudioPlayer.swift */; };
+		F5C9B60A24DC788500817901 /* WhisperCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C9B5F924DC788400817901 /* WhisperCollection.swift */; };
+		F5C9B60E24DC788500817901 /* AudioRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C9B5FD24DC788500817901 /* AudioRecorder.swift */; };
+		F5C9B60F24DC788500817901 /* DefaultWhisper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C9B5FE24DC788500817901 /* DefaultWhisper.swift */; };
+		F5C9B61324DC788500817901 /* WhisperQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C9B60224DC788500817901 /* WhisperQueue.swift */; };
+		F5C9B62024DC78A100817901 /* Time+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C9B61624DC78A000817901 /* Time+CoreDataClass.swift */; };
+		F5C9B62124DC78A100817901 /* Whisper+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C9B61724DC78A000817901 /* Whisper+CoreDataProperties.swift */; };
+		F5C9B62324DC78A100817901 /* Whisper+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C9B61924DC78A000817901 /* Whisper+CoreDataClass.swift */; };
+		F5C9B62424DC78A100817901 /* QueueArray+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C9B61A24DC78A000817901 /* QueueArray+CoreDataProperties.swift */; };
+		F5C9B62524DC78A100817901 /* QueueSettings+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C9B61B24DC78A000817901 /* QueueSettings+CoreDataProperties.swift */; };
+		F5C9B62624DC78A100817901 /* QueueSettings+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C9B61C24DC78A100817901 /* QueueSettings+CoreDataClass.swift */; };
+		F5C9B62724DC78A100817901 /* Time+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C9B61D24DC78A100817901 /* Time+CoreDataProperties.swift */; };
+		F5C9B62824DC78A100817901 /* QueueArray+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C9B61E24DC78A100817901 /* QueueArray+CoreDataClass.swift */; };
+		F5C9B63124DC78D900817901 /* WhisperCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C9B62A24DC78D800817901 /* WhisperCard.swift */; };
+		F5C9B63324DC78D900817901 /* LibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C9B62C24DC78D800817901 /* LibraryView.swift */; };
+		F5C9B63424DC78D900817901 /* QueueView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C9B62D24DC78D800817901 /* QueueView.swift */; };
+		F5C9B63524DC78D900817901 /* WhisperDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C9B62E24DC78D900817901 /* WhisperDetail.swift */; };
+		F5C9B63624DC78D900817901 /* RecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C9B62F24DC78D900817901 /* RecordView.swift */; };
+		F5C9B63724DC78D900817901 /* TimingSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C9B63024DC78D900817901 /* TimingSheet.swift */; };
+		F5C9B66B24DC7B4B00817901 /* whisperData.json in Resources */ = {isa = PBXBuildFile; fileRef = F5C9B66A24DC7B4B00817901 /* whisperData.json */; };
+		F5C9B66C24DC7B7600817901 /* whisperData.json in Sources */ = {isa = PBXBuildFile; fileRef = F5C9B66A24DC7B4B00817901 /* whisperData.json */; };
+		F5C9B66E24DC7B8F00817901 /* LaunchScreen.storyboard in Sources */ = {isa = PBXBuildFile; fileRef = F5C9B66D24DC7B8F00817901 /* LaunchScreen.storyboard */; };
+		F5C9B67024DC7C1D00817901 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F5C9B66F24DC7C1D00817901 /* Assets.xcassets */; };
+		F5C9B68824DC7CC800817901 /* live in the present.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F5C9B67124DC7CC600817901 /* live in the present.mp3 */; };
+		F5C9B68924DC7CC800817901 /* A journey of a thousand.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F5C9B67224DC7CC600817901 /* A journey of a thousand.mp3 */; };
+		F5C9B68A24DC7CC800817901 /* You are enough.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F5C9B67324DC7CC600817901 /* You are enough.mp3 */; };
+		F5C9B68B24DC7CC800817901 /* You are smart2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F5C9B67424DC7CC600817901 /* You are smart2.mp3 */; };
+		F5C9B68C24DC7CC800817901 /* Today I choose to be happy.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F5C9B67524DC7CC600817901 /* Today I choose to be happy.mp3 */; };
+		F5C9B68D24DC7CC800817901 /* Dream as if youll live.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F5C9B67624DC7CC700817901 /* Dream as if youll live.mp3 */; };
+		F5C9B68E24DC7CC800817901 /* Many of lifes failures are.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F5C9B67724DC7CC700817901 /* Many of lifes failures are.mp3 */; };
+		F5C9B68F24DC7CC800817901 /* Stretch.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F5C9B67824DC7CC700817901 /* Stretch.mp3 */; };
+		F5C9B69024DC7CC800817901 /* I can and I will.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F5C9B67924DC7CC700817901 /* I can and I will.mp3 */; };
+		F5C9B69124DC7CC800817901 /* Reach for a better thought--JK.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F5C9B67A24DC7CC700817901 /* Reach for a better thought--JK.mp3 */; };
+		F5C9B69224DC7CC800817901 /* To live is the rarest.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F5C9B67B24DC7CC700817901 /* To live is the rarest.mp3 */; };
+		F5C9B69324DC7CC800817901 /* Drink Water.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F5C9B67C24DC7CC700817901 /* Drink Water.mp3 */; };
+		F5C9B69424DC7CC800817901 /* Sit up straight.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F5C9B67D24DC7CC700817901 /* Sit up straight.mp3 */; };
+		F5C9B69524DC7CC800817901 /* You are loved.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F5C9B67E24DC7CC700817901 /* You are loved.mp3 */; };
+		F5C9B69624DC7CC800817901 /* I am responisble for my happiness.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F5C9B67F24DC7CC700817901 /* I am responisble for my happiness.mp3 */; };
+		F5C9B69724DC7CC800817901 /* When you want only love you will see nothing else.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F5C9B68024DC7CC700817901 /* When you want only love you will see nothing else.mp3 */; };
+		F5C9B69824DC7CC800817901 /* Be kinder to yourself.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F5C9B68124DC7CC800817901 /* Be kinder to yourself.mp3 */; };
+		F5C9B69924DC7CC800817901 /* All is well, Just breathe.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F5C9B68224DC7CC800817901 /* All is well, Just breathe.mp3 */; };
+		F5C9B69A24DC7CC800817901 /* Breathe in Breathe out.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F5C9B68324DC7CC800817901 /* Breathe in Breathe out.mp3 */; };
+		F5C9B69B24DC7CC800817901 /* If you change the way you look at things, the things you look at change.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F5C9B68424DC7CC800817901 /* If you change the way you look at things, the things you look at change.mp3 */; };
+		F5C9B69C24DC7CC800817901 /* Be present.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F5C9B68524DC7CC800817901 /* Be present.mp3 */; };
+		F5C9B69D24DC7CC800817901 /* You cant go back and change the beginning.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F5C9B68624DC7CC800817901 /* You cant go back and change the beginning.mp3 */; };
+		F5C9B69E24DC7CC800817901 /* Action conquers fear.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F5C9B68724DC7CC800817901 /* Action conquers fear.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		F5A4057824AFC73400B9520A /* Whispearrings.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Whispearrings.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		F5A4057B24AFC73400B9520A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		F5A4057D24AFC73400B9520A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		F5A4057F24AFC73400B9520A /* WhispersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhispersView.swift; sourceTree = "<group>"; };
-		F5A4058124AFC73900B9520A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F5A4058424AFC73900B9520A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		F5A4058724AFC73900B9520A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F5A4058924AFC73900B9520A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F5A4059124AFCAA200B9520A /* Whisper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Whisper.swift; sourceTree = "<group>"; };
-		F5A4059524AFCCB000B9520A /* whisperData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = whisperData.json; sourceTree = "<group>"; };
-		F5A4059724AFCDE100B9520A /* Whisper Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Whisper Card.swift"; sourceTree = "<group>"; };
-		F5A4059924AFD11900B9520A /* Data.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Data.swift; path = ../../../../../Downloads/BuildingListsAndNavigation/StartingPoint/Landmarks/Landmarks/Models/Data.swift; sourceTree = "<group>"; };
-		F5A4059B24AFD67800B9520A /* WhispersList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhispersList.swift; sourceTree = "<group>"; };
+		F5C9B5E224DC776E00817901 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		F5C9B5E324DC776F00817901 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		F5C9B5E424DC776F00817901 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		F5C9B5EB24DC77A400817901 /* Whispearrings.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Whispearrings.xcdatamodel; sourceTree = "<group>"; };
+		F5C9B5F324DC788400817901 /* Data.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
+		F5C9B5F524DC788400817901 /* AudioPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioPlayer.swift; sourceTree = "<group>"; };
+		F5C9B5F924DC788400817901 /* WhisperCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhisperCollection.swift; sourceTree = "<group>"; };
+		F5C9B5FD24DC788500817901 /* AudioRecorder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioRecorder.swift; sourceTree = "<group>"; };
+		F5C9B5FE24DC788500817901 /* DefaultWhisper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultWhisper.swift; sourceTree = "<group>"; };
+		F5C9B60224DC788500817901 /* WhisperQueue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhisperQueue.swift; sourceTree = "<group>"; };
+		F5C9B61624DC78A000817901 /* Time+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Time+CoreDataClass.swift"; sourceTree = "<group>"; };
+		F5C9B61724DC78A000817901 /* Whisper+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Whisper+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		F5C9B61924DC78A000817901 /* Whisper+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Whisper+CoreDataClass.swift"; sourceTree = "<group>"; };
+		F5C9B61A24DC78A000817901 /* QueueArray+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "QueueArray+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		F5C9B61B24DC78A000817901 /* QueueSettings+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "QueueSettings+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		F5C9B61C24DC78A100817901 /* QueueSettings+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "QueueSettings+CoreDataClass.swift"; sourceTree = "<group>"; };
+		F5C9B61D24DC78A100817901 /* Time+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Time+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		F5C9B61E24DC78A100817901 /* QueueArray+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "QueueArray+CoreDataClass.swift"; sourceTree = "<group>"; };
+		F5C9B62A24DC78D800817901 /* WhisperCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhisperCard.swift; sourceTree = "<group>"; };
+		F5C9B62C24DC78D800817901 /* LibraryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LibraryView.swift; sourceTree = "<group>"; };
+		F5C9B62D24DC78D800817901 /* QueueView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QueueView.swift; sourceTree = "<group>"; };
+		F5C9B62E24DC78D900817901 /* WhisperDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhisperDetail.swift; sourceTree = "<group>"; };
+		F5C9B62F24DC78D900817901 /* RecordView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordView.swift; sourceTree = "<group>"; };
+		F5C9B63024DC78D900817901 /* TimingSheet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimingSheet.swift; sourceTree = "<group>"; };
+		F5C9B66A24DC7B4B00817901 /* whisperData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = whisperData.json; sourceTree = "<group>"; };
+		F5C9B66D24DC7B8F00817901 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		F5C9B66F24DC7C1D00817901 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F5C9B67124DC7CC600817901 /* live in the present.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "live in the present.mp3"; sourceTree = "<group>"; };
+		F5C9B67224DC7CC600817901 /* A journey of a thousand.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "A journey of a thousand.mp3"; sourceTree = "<group>"; };
+		F5C9B67324DC7CC600817901 /* You are enough.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "You are enough.mp3"; sourceTree = "<group>"; };
+		F5C9B67424DC7CC600817901 /* You are smart2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "You are smart2.mp3"; sourceTree = "<group>"; };
+		F5C9B67524DC7CC600817901 /* Today I choose to be happy.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Today I choose to be happy.mp3"; sourceTree = "<group>"; };
+		F5C9B67624DC7CC700817901 /* Dream as if youll live.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Dream as if youll live.mp3"; sourceTree = "<group>"; };
+		F5C9B67724DC7CC700817901 /* Many of lifes failures are.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Many of lifes failures are.mp3"; sourceTree = "<group>"; };
+		F5C9B67824DC7CC700817901 /* Stretch.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Stretch.mp3; sourceTree = "<group>"; };
+		F5C9B67924DC7CC700817901 /* I can and I will.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "I can and I will.mp3"; sourceTree = "<group>"; };
+		F5C9B67A24DC7CC700817901 /* Reach for a better thought--JK.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Reach for a better thought--JK.mp3"; sourceTree = "<group>"; };
+		F5C9B67B24DC7CC700817901 /* To live is the rarest.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "To live is the rarest.mp3"; sourceTree = "<group>"; };
+		F5C9B67C24DC7CC700817901 /* Drink Water.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Drink Water.mp3"; sourceTree = "<group>"; };
+		F5C9B67D24DC7CC700817901 /* Sit up straight.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Sit up straight.mp3"; sourceTree = "<group>"; };
+		F5C9B67E24DC7CC700817901 /* You are loved.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "You are loved.mp3"; sourceTree = "<group>"; };
+		F5C9B67F24DC7CC700817901 /* I am responisble for my happiness.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "I am responisble for my happiness.mp3"; sourceTree = "<group>"; };
+		F5C9B68024DC7CC700817901 /* When you want only love you will see nothing else.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "When you want only love you will see nothing else.mp3"; sourceTree = "<group>"; };
+		F5C9B68124DC7CC800817901 /* Be kinder to yourself.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Be kinder to yourself.mp3"; sourceTree = "<group>"; };
+		F5C9B68224DC7CC800817901 /* All is well, Just breathe.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "All is well, Just breathe.mp3"; sourceTree = "<group>"; };
+		F5C9B68324DC7CC800817901 /* Breathe in Breathe out.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Breathe in Breathe out.mp3"; sourceTree = "<group>"; };
+		F5C9B68424DC7CC800817901 /* If you change the way you look at things, the things you look at change.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "If you change the way you look at things, the things you look at change.mp3"; sourceTree = "<group>"; };
+		F5C9B68524DC7CC800817901 /* Be present.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Be present.mp3"; sourceTree = "<group>"; };
+		F5C9B68624DC7CC800817901 /* You cant go back and change the beginning.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "You cant go back and change the beginning.mp3"; sourceTree = "<group>"; };
+		F5C9B68724DC7CC800817901 /* Action conquers fear.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Action conquers fear.mp3"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,17 +147,17 @@
 		F5A4057A24AFC73400B9520A /* Whispearrings */ = {
 			isa = PBXGroup;
 			children = (
+				F5C9B66D24DC7B8F00817901 /* LaunchScreen.storyboard */,
+				F5C9B5E424DC776F00817901 /* AppDelegate.swift */,
+				F5C9B5E324DC776F00817901 /* SceneDelegate.swift */,
+				F5C9B5E224DC776E00817901 /* ContentView.swift */,
+				F5C9B62924DC78C700817901 /* Views */,
+				F5C9B5F124DC787900817901 /* Models */,
 				F5A4059424AFCC7B00B9520A /* Resources */,
-				F5A4059024AFCA4400B9520A /* Models */,
-				F5A4057B24AFC73400B9520A /* AppDelegate.swift */,
-				F5A4057D24AFC73400B9520A /* SceneDelegate.swift */,
-				F5A4057F24AFC73400B9520A /* WhispersView.swift */,
-				F5A4059B24AFD67800B9520A /* WhispersList.swift */,
-				F5A4058124AFC73900B9520A /* Assets.xcassets */,
-				F5A4058624AFC73900B9520A /* LaunchScreen.storyboard */,
 				F5A4058924AFC73900B9520A /* Info.plist */,
+				F5C9B66F24DC7C1D00817901 /* Assets.xcassets */,
+				F5C9B5EA24DC77A400817901 /* Whispearrings.xcdatamodeld */,
 				F5A4058324AFC73900B9520A /* Preview Content */,
-				F5A4059724AFCDE100B9520A /* Whisper Card.swift */,
 			);
 			path = Whispearrings;
 			sourceTree = "<group>";
@@ -89,21 +170,85 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		F5A4059024AFCA4400B9520A /* Models */ = {
+		F5A4059424AFCC7B00B9520A /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				F5A4059924AFD11900B9520A /* Data.swift */,
-				F5A4059124AFCAA200B9520A /* Whisper.swift */,
+				F5C9B66A24DC7B4B00817901 /* whisperData.json */,
+				F5C9B63824DC7A1A00817901 /* Sounds */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		F5C9B5F124DC787900817901 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F5C9B5F524DC788400817901 /* AudioPlayer.swift */,
+				F5C9B5FD24DC788500817901 /* AudioRecorder.swift */,
+				F5C9B61424DC789500817901 /* CoreData */,
+				F5C9B5F324DC788400817901 /* Data.swift */,
+				F5C9B5FE24DC788500817901 /* DefaultWhisper.swift */,
+				F5C9B5F924DC788400817901 /* WhisperCollection.swift */,
+				F5C9B60224DC788500817901 /* WhisperQueue.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
 		};
-		F5A4059424AFCC7B00B9520A /* Resources */ = {
+		F5C9B61424DC789500817901 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
-				F5A4059524AFCCB000B9520A /* whisperData.json */,
+				F5C9B61E24DC78A100817901 /* QueueArray+CoreDataClass.swift */,
+				F5C9B61A24DC78A000817901 /* QueueArray+CoreDataProperties.swift */,
+				F5C9B61C24DC78A100817901 /* QueueSettings+CoreDataClass.swift */,
+				F5C9B61B24DC78A000817901 /* QueueSettings+CoreDataProperties.swift */,
+				F5C9B61624DC78A000817901 /* Time+CoreDataClass.swift */,
+				F5C9B61D24DC78A100817901 /* Time+CoreDataProperties.swift */,
+				F5C9B61924DC78A000817901 /* Whisper+CoreDataClass.swift */,
+				F5C9B61724DC78A000817901 /* Whisper+CoreDataProperties.swift */,
 			);
-			path = Resources;
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		F5C9B62924DC78C700817901 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F5C9B62C24DC78D800817901 /* LibraryView.swift */,
+				F5C9B62D24DC78D800817901 /* QueueView.swift */,
+				F5C9B62F24DC78D900817901 /* RecordView.swift */,
+				F5C9B63024DC78D900817901 /* TimingSheet.swift */,
+				F5C9B62A24DC78D800817901 /* WhisperCard.swift */,
+				F5C9B62E24DC78D900817901 /* WhisperDetail.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		F5C9B63824DC7A1A00817901 /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				F5C9B67224DC7CC600817901 /* A journey of a thousand.mp3 */,
+				F5C9B68724DC7CC800817901 /* Action conquers fear.mp3 */,
+				F5C9B68224DC7CC800817901 /* All is well, Just breathe.mp3 */,
+				F5C9B68124DC7CC800817901 /* Be kinder to yourself.mp3 */,
+				F5C9B68524DC7CC800817901 /* Be present.mp3 */,
+				F5C9B68324DC7CC800817901 /* Breathe in Breathe out.mp3 */,
+				F5C9B67624DC7CC700817901 /* Dream as if youll live.mp3 */,
+				F5C9B67C24DC7CC700817901 /* Drink Water.mp3 */,
+				F5C9B67F24DC7CC700817901 /* I am responisble for my happiness.mp3 */,
+				F5C9B67924DC7CC700817901 /* I can and I will.mp3 */,
+				F5C9B68424DC7CC800817901 /* If you change the way you look at things, the things you look at change.mp3 */,
+				F5C9B67124DC7CC600817901 /* live in the present.mp3 */,
+				F5C9B67724DC7CC700817901 /* Many of lifes failures are.mp3 */,
+				F5C9B67A24DC7CC700817901 /* Reach for a better thought--JK.mp3 */,
+				F5C9B67D24DC7CC700817901 /* Sit up straight.mp3 */,
+				F5C9B67824DC7CC700817901 /* Stretch.mp3 */,
+				F5C9B67B24DC7CC700817901 /* To live is the rarest.mp3 */,
+				F5C9B67524DC7CC600817901 /* Today I choose to be happy.mp3 */,
+				F5C9B68024DC7CC700817901 /* When you want only love you will see nothing else.mp3 */,
+				F5C9B67324DC7CC600817901 /* You are enough.mp3 */,
+				F5C9B67E24DC7CC700817901 /* You are loved.mp3 */,
+				F5C9B67424DC7CC600817901 /* You are smart2.mp3 */,
+				F5C9B68624DC7CC800817901 /* You cant go back and change the beginning.mp3 */,
+			);
+			path = Sounds;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -133,7 +278,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1150;
-				LastUpgradeCheck = 1150;
+				LastUpgradeCheck = 1200;
 				ORGANIZATIONNAME = Whispearrings;
 				TargetAttributes = {
 					F5A4057724AFC73400B9520A = {
@@ -142,7 +287,7 @@
 				};
 			};
 			buildConfigurationList = F5A4057324AFC73400B9520A /* Build configuration list for PBXProject "Whispearrings" */;
-			compatibilityVersion = "Xcode 9.3";
+			compatibilityVersion = "Xcode 12.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -164,10 +309,32 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F5A4059624AFCCB000B9520A /* whisperData.json in Resources */,
-				F5A4058824AFC73900B9520A /* LaunchScreen.storyboard in Resources */,
 				F5A4058524AFC73900B9520A /* Preview Assets.xcassets in Resources */,
-				F5A4058224AFC73900B9520A /* Assets.xcassets in Resources */,
+				F5C9B68D24DC7CC800817901 /* Dream as if youll live.mp3 in Resources */,
+				F5C9B68F24DC7CC800817901 /* Stretch.mp3 in Resources */,
+				F5C9B69D24DC7CC800817901 /* You cant go back and change the beginning.mp3 in Resources */,
+				F5C9B66B24DC7B4B00817901 /* whisperData.json in Resources */,
+				F5C9B69C24DC7CC800817901 /* Be present.mp3 in Resources */,
+				F5C9B68924DC7CC800817901 /* A journey of a thousand.mp3 in Resources */,
+				F5C9B68E24DC7CC800817901 /* Many of lifes failures are.mp3 in Resources */,
+				F5C9B69624DC7CC800817901 /* I am responisble for my happiness.mp3 in Resources */,
+				F5C9B69824DC7CC800817901 /* Be kinder to yourself.mp3 in Resources */,
+				F5C9B69E24DC7CC800817901 /* Action conquers fear.mp3 in Resources */,
+				F5C9B69124DC7CC800817901 /* Reach for a better thought--JK.mp3 in Resources */,
+				F5C9B68C24DC7CC800817901 /* Today I choose to be happy.mp3 in Resources */,
+				F5C9B68B24DC7CC800817901 /* You are smart2.mp3 in Resources */,
+				F5C9B69B24DC7CC800817901 /* If you change the way you look at things, the things you look at change.mp3 in Resources */,
+				F5C9B68A24DC7CC800817901 /* You are enough.mp3 in Resources */,
+				F5C9B69224DC7CC800817901 /* To live is the rarest.mp3 in Resources */,
+				F5C9B69724DC7CC800817901 /* When you want only love you will see nothing else.mp3 in Resources */,
+				F5C9B69024DC7CC800817901 /* I can and I will.mp3 in Resources */,
+				F5C9B69424DC7CC800817901 /* Sit up straight.mp3 in Resources */,
+				F5C9B69524DC7CC800817901 /* You are loved.mp3 in Resources */,
+				F5C9B69924DC7CC800817901 /* All is well, Just breathe.mp3 in Resources */,
+				F5C9B69324DC7CC800817901 /* Drink Water.mp3 in Resources */,
+				F5C9B68824DC7CC800817901 /* live in the present.mp3 in Resources */,
+				F5C9B67024DC7C1D00817901 /* Assets.xcassets in Resources */,
+				F5C9B69A24DC7CC800817901 /* Breathe in Breathe out.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -178,28 +345,36 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F5A4057C24AFC73400B9520A /* AppDelegate.swift in Sources */,
-				F5A4059A24AFD11900B9520A /* Data.swift in Sources */,
-				F5A4059C24AFD67800B9520A /* WhispersList.swift in Sources */,
-				F5A4057E24AFC73400B9520A /* SceneDelegate.swift in Sources */,
-				F5A4059824AFCDE100B9520A /* Whisper Card.swift in Sources */,
-				F5A4059224AFCAA200B9520A /* Whisper.swift in Sources */,
-				F5A4058024AFC73400B9520A /* WhispersView.swift in Sources */,
+				F5C9B66E24DC7B8F00817901 /* LaunchScreen.storyboard in Sources */,
+				F5C9B66C24DC7B7600817901 /* whisperData.json in Sources */,
+				F5C9B61324DC788500817901 /* WhisperQueue.swift in Sources */,
+				F5C9B62824DC78A100817901 /* QueueArray+CoreDataClass.swift in Sources */,
+				F5C9B62724DC78A100817901 /* Time+CoreDataProperties.swift in Sources */,
+				F5C9B60E24DC788500817901 /* AudioRecorder.swift in Sources */,
+				F5C9B60624DC788500817901 /* AudioPlayer.swift in Sources */,
+				F5C9B62324DC78A100817901 /* Whisper+CoreDataClass.swift in Sources */,
+				F5C9B62624DC78A100817901 /* QueueSettings+CoreDataClass.swift in Sources */,
+				F5C9B60F24DC788500817901 /* DefaultWhisper.swift in Sources */,
+				F5C9B62024DC78A100817901 /* Time+CoreDataClass.swift in Sources */,
+				F5C9B5EC24DC77A400817901 /* Whispearrings.xcdatamodeld in Sources */,
+				F5C9B63424DC78D900817901 /* QueueView.swift in Sources */,
+				F5C9B5E624DC776F00817901 /* AppDelegate.swift in Sources */,
+				F5C9B63624DC78D900817901 /* RecordView.swift in Sources */,
+				F5C9B63124DC78D900817901 /* WhisperCard.swift in Sources */,
+				F5C9B62524DC78A100817901 /* QueueSettings+CoreDataProperties.swift in Sources */,
+				F5C9B63324DC78D900817901 /* LibraryView.swift in Sources */,
+				F5C9B62124DC78A100817901 /* Whisper+CoreDataProperties.swift in Sources */,
+				F5C9B5E524DC776F00817901 /* SceneDelegate.swift in Sources */,
+				F5C9B60A24DC788500817901 /* WhisperCollection.swift in Sources */,
+				F5C9B63524DC78D900817901 /* WhisperDetail.swift in Sources */,
+				F5C9B62424DC78A100817901 /* QueueArray+CoreDataProperties.swift in Sources */,
+				F5C9B60424DC788500817901 /* Data.swift in Sources */,
+				F5C9B5E724DC776F00817901 /* ContentView.swift in Sources */,
+				F5C9B63724DC78D900817901 /* TimingSheet.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		F5A4058624AFC73900B9520A /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				F5A4058724AFC73900B9520A /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		F5A4058A24AFC73900B9520A /* Debug */ = {
@@ -228,6 +403,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -288,6 +464,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -378,6 +555,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		F5C9B5EA24DC77A400817901 /* Whispearrings.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				F5C9B5EB24DC77A400817901 /* Whispearrings.xcdatamodel */,
+			);
+			currentVersion = F5C9B5EB24DC77A400817901 /* Whispearrings.xcdatamodel */;
+			path = Whispearrings.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = F5A4057024AFC73400B9520A /* Project object */;
 }

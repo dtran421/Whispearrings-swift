@@ -1,22 +1,22 @@
 [
     {
-        "id": 1,
-        "value": "\"Be present\"",
-        "times": [
-            "7:00",
-            "8:00",
-            "11:56"
-        ],
-        "user": "Bob"
+        "value": "All is well, Just breathe",
+        "soundFile": "All is well, Just breathe"
     },
     {
-        "id": 2,
-        "value": "\"Sit up straight\"",
-        "times": [
-            "10:00",
-            "11:00",
-            "2:15"
-        ],
-        "user": "Bob"
-    }
+        "value": "Be kinder to yourself",
+        "soundFile": "Be kinder to yourself"
+    },
+    {
+        "value": "Be present",
+        "soundFile": "Be present"
+    },
+    {
+        "value": "Breathe in Breathe out",
+        "soundFile": "Breathe in Breathe out"
+    },
+    {
+        "value": "Drink water",
+        "soundFile": "Drink Water"
+    },
 ]
