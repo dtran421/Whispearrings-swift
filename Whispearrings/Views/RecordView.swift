@@ -18,6 +18,7 @@ class UserInput: ObservableObject {
 }
 
 struct RecordView: View {
+    @Environment(\.managedObjectContext) var managedObjectContext
     @EnvironmentObject var whisperCollection: WhisperCollection
     
     @ObservedObject var audioRecorder: AudioRecorder = AudioRecorder()
@@ -55,10 +56,6 @@ struct RecordView: View {
                 .disabled(userInput.whisperValue == "")
                 Spacer()
                 Button(action: {
-                    let appDelegate = UIApplication.shared.delegate as! AppDelegate
-
-                    let managedObjectContext = appDelegate.persistentContainer.viewContext
-                    
                     whisper = Whisper(context: managedObjectContext)
                     
                     whisper.id = UUID()
@@ -73,7 +70,7 @@ struct RecordView: View {
                         userInput.clear()
                         hasRecorded = false
                         
-                        whisperCollection.fetchWhispers()
+                        whisperCollection.fetchWhispers(managedObjectContext: managedObjectContext)
                     } catch let error as NSError {
                         print("Could not save. \(error), \(error.userInfo)")
                     }

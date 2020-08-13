@@ -15,11 +15,11 @@ class WhisperCollection: ObservableObject {
     
     @Published var queue: Array<Whisper> = []
     
-    func fetchWhispers() {
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-
-        let managedObjectContext = appDelegate.persistentContainer.viewContext
-        
+    @Published var times: Array<Time> = []
+    
+    @Published var updated: Bool = true
+    
+    func fetchWhispers(managedObjectContext: NSManagedObjectContext) {
         var output = Array<Whisper>()
         
         do {
@@ -31,11 +31,7 @@ class WhisperCollection: ObservableObject {
         whispers = output
     }
     
-    func fetchQueue() {
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-
-        let managedObjectContext = appDelegate.persistentContainer.viewContext
-        
+    func fetchQueue(managedObjectContext: NSManagedObjectContext) {
         var output = Array<Whisper>()
         
         do {
@@ -47,5 +43,19 @@ class WhisperCollection: ObservableObject {
         }
        
         queue = output
+    }
+    
+    func fetchTimes(managedObjectContext: NSManagedObjectContext) {
+        var output = Array<Time>()
+        
+        do {
+            output = try managedObjectContext.fetch(NSFetchRequest<Time>(entityName: "Time"))
+        } catch let error as NSError {
+            print("Could not fetch. \(error), \(error.userInfo)")
+        }
+        
+        times = output
+        
+        updated = false
     }
 }

@@ -58,7 +58,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                         
         do {
             try managedObjectContext.save()
-            print("saved!")
+            print("saved preloaded data!")
         } catch let error as NSError {
             print("Could not save. \(error), \(error.userInfo)")
         }

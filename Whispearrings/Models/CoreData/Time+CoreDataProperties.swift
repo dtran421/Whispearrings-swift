@@ -17,7 +17,10 @@ extension Time {
         return NSFetchRequest<Time>(entityName: "Time")
     }
 
-    @NSManaged public var time: String?
+    @NSManaged public var intervalMode: Bool
+    @NSManaged public var specificMode: Bool
+    @NSManaged public var timeInterval: Int16
+    @NSManaged public var specificTime: Date
     @NSManaged public var whisper: Whisper?
 
 }

@@ -29,9 +29,8 @@
 		F5C9B63124DC78D900817901 /* WhisperCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C9B62A24DC78D800817901 /* WhisperCard.swift */; };
 		F5C9B63324DC78D900817901 /* LibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C9B62C24DC78D800817901 /* LibraryView.swift */; };
 		F5C9B63424DC78D900817901 /* QueueView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C9B62D24DC78D800817901 /* QueueView.swift */; };
-		F5C9B63524DC78D900817901 /* WhisperDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C9B62E24DC78D900817901 /* WhisperDetail.swift */; };
 		F5C9B63624DC78D900817901 /* RecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C9B62F24DC78D900817901 /* RecordView.swift */; };
-		F5C9B63724DC78D900817901 /* TimingSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C9B63024DC78D900817901 /* TimingSheet.swift */; };
+		F5C9B63724DC78D900817901 /* QueueTimingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C9B63024DC78D900817901 /* QueueTimingView.swift */; };
 		F5C9B66B24DC7B4B00817901 /* whisperData.json in Resources */ = {isa = PBXBuildFile; fileRef = F5C9B66A24DC7B4B00817901 /* whisperData.json */; };
 		F5C9B66C24DC7B7600817901 /* whisperData.json in Sources */ = {isa = PBXBuildFile; fileRef = F5C9B66A24DC7B4B00817901 /* whisperData.json */; };
 		F5C9B66E24DC7B8F00817901 /* LaunchScreen.storyboard in Sources */ = {isa = PBXBuildFile; fileRef = F5C9B66D24DC7B8F00817901 /* LaunchScreen.storyboard */; };
@@ -59,6 +58,7 @@
 		F5C9B69C24DC7CC800817901 /* Be present.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F5C9B68524DC7CC800817901 /* Be present.mp3 */; };
 		F5C9B69D24DC7CC800817901 /* You cant go back and change the beginning.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F5C9B68624DC7CC800817901 /* You cant go back and change the beginning.mp3 */; };
 		F5C9B69E24DC7CC800817901 /* Action conquers fear.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F5C9B68724DC7CC800817901 /* Action conquers fear.mp3 */; };
+		F5C9B6A024E0DEF300817901 /* CustomTimingSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C9B69F24E0DEF200817901 /* CustomTimingSheet.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -86,9 +86,8 @@
 		F5C9B62A24DC78D800817901 /* WhisperCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhisperCard.swift; sourceTree = "<group>"; };
 		F5C9B62C24DC78D800817901 /* LibraryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LibraryView.swift; sourceTree = "<group>"; };
 		F5C9B62D24DC78D800817901 /* QueueView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QueueView.swift; sourceTree = "<group>"; };
-		F5C9B62E24DC78D900817901 /* WhisperDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhisperDetail.swift; sourceTree = "<group>"; };
 		F5C9B62F24DC78D900817901 /* RecordView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordView.swift; sourceTree = "<group>"; };
-		F5C9B63024DC78D900817901 /* TimingSheet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimingSheet.swift; sourceTree = "<group>"; };
+		F5C9B63024DC78D900817901 /* QueueTimingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QueueTimingView.swift; sourceTree = "<group>"; };
 		F5C9B66A24DC7B4B00817901 /* whisperData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = whisperData.json; sourceTree = "<group>"; };
 		F5C9B66D24DC7B8F00817901 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F5C9B66F24DC7C1D00817901 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -115,6 +114,7 @@
 		F5C9B68524DC7CC800817901 /* Be present.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Be present.mp3"; sourceTree = "<group>"; };
 		F5C9B68624DC7CC800817901 /* You cant go back and change the beginning.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "You cant go back and change the beginning.mp3"; sourceTree = "<group>"; };
 		F5C9B68724DC7CC800817901 /* Action conquers fear.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Action conquers fear.mp3"; sourceTree = "<group>"; };
+		F5C9B69F24E0DEF200817901 /* CustomTimingSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTimingSheet.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -214,9 +214,9 @@
 				F5C9B62C24DC78D800817901 /* LibraryView.swift */,
 				F5C9B62D24DC78D800817901 /* QueueView.swift */,
 				F5C9B62F24DC78D900817901 /* RecordView.swift */,
-				F5C9B63024DC78D900817901 /* TimingSheet.swift */,
+				F5C9B69F24E0DEF200817901 /* CustomTimingSheet.swift */,
+				F5C9B63024DC78D900817901 /* QueueTimingView.swift */,
 				F5C9B62A24DC78D800817901 /* WhisperCard.swift */,
-				F5C9B62E24DC78D900817901 /* WhisperDetail.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -366,11 +366,11 @@
 				F5C9B62124DC78A100817901 /* Whisper+CoreDataProperties.swift in Sources */,
 				F5C9B5E524DC776F00817901 /* SceneDelegate.swift in Sources */,
 				F5C9B60A24DC788500817901 /* WhisperCollection.swift in Sources */,
-				F5C9B63524DC78D900817901 /* WhisperDetail.swift in Sources */,
 				F5C9B62424DC78A100817901 /* QueueArray+CoreDataProperties.swift in Sources */,
 				F5C9B60424DC788500817901 /* Data.swift in Sources */,
+				F5C9B6A024E0DEF300817901 /* CustomTimingSheet.swift in Sources */,
 				F5C9B5E724DC776F00817901 /* ContentView.swift in Sources */,
-				F5C9B63724DC78D900817901 /* TimingSheet.swift in Sources */,
+				F5C9B63724DC78D900817901 /* QueueTimingView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

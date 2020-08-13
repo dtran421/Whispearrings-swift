@@ -8,21 +8,26 @@
 
 import SwiftUI
 import AVFoundation
+import CoreData
 
 struct WhisperCard: View {
+    @Environment(\.managedObjectContext) var managedObjectContext
+    @EnvironmentObject var selectedWhisper: SelectedWhisper
+    @EnvironmentObject var audioPlayer: AudioPlayer
+
     var whisper: Whisper!
     
-    var audioPlayer: AudioPlayer
-    
-    var isPlaying: Bool
+    var currPlaying: Bool
+        
+    @Binding var showTimingSheet: Bool
+            
+    @Binding var progress: Double
+    @Binding var duration: Double
     
     func updateProgress() {
         progress = (audioPlayer.currentTime / audioPlayer.duration)
         duration = audioPlayer.duration
     }
-    
-    @Binding var progress: Double
-    @Binding var duration: Double
     
     @State private var offset = CGFloat.zero
     
@@ -33,7 +38,23 @@ struct WhisperCard: View {
         ZStack {
             HStack() {
                 Spacer()
-                Button(action: {}, label: {
+                Button(action: {
+                    do {
+                        let temp = try managedObjectContext.fetch(NSFetchRequest<QueueArray>(entityName: "QueueArray"))
+                        
+                        temp[0].removeFromQueue(whisper)
+                                        
+                    } catch let error as NSError {
+                        print("Could not fetch. \(error), \(error.userInfo)")
+                    }
+                    
+                    do {
+                        try managedObjectContext.save()
+                        print("saved new queue!")
+                    } catch let error as NSError {
+                        print("Could not save. \(error), \(error.userInfo)")
+                    }
+                }, label: {
                     Text("Remove from Queue")
                         .font(.headline)
                         .foregroundColor(.white)
@@ -60,11 +81,11 @@ struct WhisperCard: View {
                                 Text("my whisper")
                                     .font(.callout))
                     }
-                    Image(systemName: isPlaying ? "stop.fill" : "play.fill")
+                    Image(systemName: currPlaying ? "stop.fill" : "play.fill")
                         .resizable()
                         .frame(width: 25, height: 25)
                         .padding(.trailing, 10.0)
-                        .onTapGesture() {
+                        .onTapGesture {
                             if audioPlayer.isPlaying {
                                 audioPlayer.stop()
                             }
@@ -75,16 +96,17 @@ struct WhisperCard: View {
                                 audioPlayer.currPlaying = nil
                             }
                         }
-                    if isPlaying {
-                        VStack {
-                            HStack {
-                                Text(whisper.value!)
-                                    .fontWeight(.semibold)
-                                Spacer()
-                            }
+                    VStack {
+                        HStack {
+                            Text(whisper.value!)
+                                .fontWeight(.semibold)
                             Spacer()
+                        }
+                        Spacer()
+                        if currPlaying {
                             Slider(value: self.$progress)
                                 .accentColor(.black)
+                                .animation(.linear)
                             HStack {
                                 Spacer()
                                 let tempDuration = ceil(duration)
@@ -94,61 +116,52 @@ struct WhisperCard: View {
                                     .font(.caption)
                             }
                             Spacer()
-                            HStack {
-                                Spacer()
-                                Image(systemName: "clock")
-                                    .resizable()
-                                    .frame(width: 25, height: 25)
-                            }
                         }
-                    } else {
-                        VStack {
-                            HStack {
-                                Text(whisper.value!)
-                                    .fontWeight(.semibold)
-                                Spacer()
-                            }
+                        HStack {
                             Spacer()
-                            HStack {
-                                Spacer()
-                                Image(systemName: "clock")
-                                    .resizable()
-                                    .frame(width: 25, height: 25)
-                            }
+                            Image(systemName: "clock")
+                                .resizable()
+                                .frame(width: 25, height: 25)
+                                .onTapGesture {
+                                    showTimingSheet.toggle()
+                                    selectedWhisper.selectWhisper(newWhisper: whisper)
+                                }
                         }
                     }
                     Spacer()
-                    /*NavigationLink(destination: WhisperDetail(whisper: whisper)) {
-                    }*/
                 }
                 .padding([.top, .leading, .bottom])
                 .background(Color.white)
             }
             .offset(x: offset)
             .gesture(
-                DragGesture()
+                DragGesture(minimumDistance: CGFloat(25))
                     .onChanged { gesture in
-                        let width = gesture.translation.width
-                        if width < 0 {
-                            if offset + width < DRAG_MAX {
-                                offset = DRAG_MAX
+                        withAnimation(.easeOut) {
+                            let width = gesture.translation.width
+                            if width < 0 {
+                                if offset + width < DRAG_MAX {
+                                    offset = DRAG_MAX
+                                } else {
+                                    offset = width
+                                }
                             } else {
-                                offset = width
-                            }
-                        } else {
-                            if offset + width > 0 {
-                                offset = 0
-                            } else {
-                                offset += width * 0.5
+                                if offset + width > 0 {
+                                    offset = 0
+                                } else {
+                                    offset += (width / 5)
+                                }
                             }
                         }
                     }
 
                     .onEnded { gesture in
-                        if offset > DRAG_THRESHOLD {
-                            offset = 0
-                        } else {
-                            offset = DRAG_MAX
+                        withAnimation(.easeOut) {
+                            if offset > DRAG_THRESHOLD {
+                                offset = 0
+                            } else {
+                                offset = DRAG_MAX
+                            }
                         }
                     }
             )

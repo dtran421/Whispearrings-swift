@@ -12,7 +12,7 @@ struct LibraryView: View {
     @EnvironmentObject var whisperCollection: WhisperCollection
     
     @State var selectedFilter: String = "all"
-    
+        
     var filters: Array<String> = ["all", "defaults", "my whispers"]
     
     var body: some View {

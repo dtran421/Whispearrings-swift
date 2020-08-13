@@ -10,7 +10,10 @@
         <attribute name="timing" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
     </entity>
     <entity name="Time" representedClassName=".Time" syncable="YES">
-        <attribute name="time" optional="YES" attributeType="String"/>
+        <attribute name="intervalMode" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="specificMode" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="specificTime" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="timeInterval" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <relationship name="whisper" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Whisper" inverseName="times" inverseEntity="Whisper"/>
     </entity>
     <entity name="Whisper" representedClassName=".Whisper" syncable="YES">
@@ -24,7 +27,7 @@
     <elements>
         <element name="QueueArray" positionX="-27" positionY="72" width="128" height="58"/>
         <element name="QueueSettings" positionX="-36" positionY="45" width="128" height="103"/>
-        <element name="Time" positionX="-54" positionY="18" width="128" height="73"/>
+        <element name="Time" positionX="-54" positionY="18" width="128" height="118"/>
         <element name="Whisper" positionX="-63" positionY="-18" width="128" height="133"/>
     </elements>
 </model>

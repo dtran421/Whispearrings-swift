@@ -8,10 +8,12 @@
 
 import SwiftUI
 import Combine
+import CoreData
 
-struct TimingSheet: View {
+struct QueueTimingView: View {
+    @Environment(\.managedObjectContext) var managedObjectContext
         
-    @Binding var showTimingSheet: Bool
+    @Binding var showQueueTiming: Bool
     
     @Binding var timing: Int
     @Binding var randomTiming: Bool
@@ -23,15 +25,42 @@ struct TimingSheet: View {
     var body: some View {
         VStack {
             HStack {
-                Spacer()
                 Button(action: {
-                    showTimingSheet.toggle()
-                }) {
-                    Text("DONE").fontWeight(.semibold).foregroundColor(Color.black)
-                        .onTapGesture {
-                            showTimingSheet.toggle()
-                        }
-                }
+                    do {
+                        let temp = try managedObjectContext.fetch(NSFetchRequest<QueueSettings>(entityName: "QueueSettings"))
+                        
+                        managedObjectContext.delete(temp[0])
+                                        
+                        let newSettings = QueueSettings(context: managedObjectContext)
+                        
+                        newSettings.timing = Int16(timing)
+                        newSettings.randomTiming = randomTiming
+                        newSettings.shufflePlay = shufflePlay
+                        newSettings.repeatPlay = repeatPlay
+                                                                
+                    } catch let error as NSError {
+                        print("Could not fetch. \(error), \(error.userInfo)")
+                    }
+                    
+                    do {
+                        try managedObjectContext.save()
+                        print("saved!")
+                    } catch let error as NSError {
+                        print("Could not save. \(error), \(error.userInfo)")
+                    }
+                    
+                    showQueueTiming.toggle()
+                }, label: {
+                    Image(systemName: "chevron.left")
+                        .resizable()
+                        .frame(width: 10, height: 20)
+                        .accentColor(.black)
+                    Text("QUEUE")
+                        .font(.body)
+                        .fontWeight(.medium)
+                        .foregroundColor(Color.black)
+                })
+                Spacer()
             }
             .padding([.top, .leading, .trailing])
             Image(systemName: "clock")

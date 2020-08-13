@@ -10,6 +10,69 @@ import UIKit
 import SwiftUI
 import CoreData
 
+class SettingsTracker: ObservableObject {
+    var initialTiming: Int
+    var initialRandomTiming: Bool
+    var initialShufflePlay: Bool
+    var initialRepeatPlay: Bool
+    
+    init(timing: Int, randomTiming: Bool, shufflePlay: Bool, repeatPlay: Bool) {
+        initialTiming = timing
+        initialRandomTiming = randomTiming
+        initialShufflePlay = shufflePlay
+        initialRepeatPlay = repeatPlay
+    }
+    
+    func reset(newTiming: Int, newRandomTiming: Bool, newShufflePlay: Bool, newRepeatPlay: Bool) {
+        initialTiming = newTiming
+        initialRandomTiming = newRandomTiming
+        initialShufflePlay = newShufflePlay
+        initialRepeatPlay = newRepeatPlay
+    }
+}
+
+class SelectedWhisper: ObservableObject {
+    var whisper: Whisper
+    
+    var intervalMode: Bool = false
+    var specificMode: Bool = false
+    var timeInterval: Int = 0
+    var specificTime: Date = Date()
+    
+    init(whisperCollection: WhisperCollection) {
+        whisper = whisperCollection.whispers[0]
+        
+        let temp = whisper.times as! Set<Time>
+        if !temp.isEmpty {
+            let time = temp.first!
+            
+            intervalMode = time.intervalMode
+            specificMode = time.specificMode
+            timeInterval = Int(time.timeInterval)
+            specificTime = time.specificTime
+        }
+    }
+    
+    func selectWhisper(newWhisper: Whisper) {
+        whisper = newWhisper
+        
+        let temp = whisper.times as! Set<Time>
+        if !temp.isEmpty {
+            let time = temp.first!
+            
+            intervalMode = time.intervalMode
+            specificMode = time.specificMode
+            timeInterval = Int(time.timeInterval)
+            specificTime = time.specificTime
+        } else {
+            intervalMode = false
+            specificMode = false
+            timeInterval = 0
+            specificTime = Date()
+        }
+    }
+}
+
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
@@ -21,12 +84,32 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         
-        whisperCollection.fetchWhispers()
-        whisperCollection.fetchQueue()
+        let managedObjectContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        
+        whisperCollection.fetchWhispers(managedObjectContext: managedObjectContext)
+        whisperCollection.fetchQueue(managedObjectContext: managedObjectContext)
+        whisperCollection.fetchTimes(managedObjectContext: managedObjectContext)
+        
+        var settings: QueueSettings!
+            
+        do {
+            let output = try managedObjectContext.fetch(NSFetchRequest<QueueSettings>(entityName: "QueueSettings"))
+            
+            settings = output[0]
+            
+        } catch let error as NSError {
+            print("Could not fetch. \(error), \(error.userInfo)")
+        }
+
+        let settingsTracker = SettingsTracker(timing: Int(settings.timing), randomTiming: settings.randomTiming, shufflePlay: settings.shufflePlay, repeatPlay: settings.repeatPlay)
+        
+        let selectedWhisper = SelectedWhisper(whisperCollection: whisperCollection)
         
         // Create the SwiftUI view that provides the window contents.
-        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-        let contentView = ContentView().environment(\.managedObjectContext, context).environmentObject(whisperCollection)
+        let contentView = ContentView(settingsTracker: settingsTracker, timing: Int(settings.timing), randomTiming: settings.randomTiming, shufflePlay: settings.shufflePlay, repeatPlay: settings.repeatPlay)
+                .environment(\.managedObjectContext, managedObjectContext)
+                .environmentObject(whisperCollection)
+                .environmentObject(selectedWhisper)
 
         // Use a UIHostingController as window root view controller.
         if let windowScene = scene as? UIWindowScene {
