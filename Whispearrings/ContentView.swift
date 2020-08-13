@@ -59,6 +59,7 @@ struct ContentView: View {
         
         if randomTiming {
             queueTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { queueTimer in
+                // TODO: Check randomness for desired time (max. 2 hours)
                 if !paused && Int.random(in: 1 ..< 1000) % 10 == 1 && !whisperQueue.isEmpty {
                     playQueue.enqueue((whisperQueue.dequeue())!)
                 }
@@ -91,6 +92,7 @@ struct ContentView: View {
     
     var timings: Array<String> = ["5 minutes", "15 minutes", "30 minutes", "1 hour", "1.5 hours", "2 hours"]
     
+    // TODO: change 0 and 1 indexes to correct times
     var times: Dictionary<Int, Double> = [0: 10, 1: 20, 2: 1800, 3: 3600, 4: 5400, 5: 7200]
     
     @State var duration: Double = 0.0

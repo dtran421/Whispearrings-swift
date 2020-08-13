@@ -91,6 +91,7 @@ struct QueueView: View {
     }
 }
 
+// TODO: Improve previews
 struct QueueView_Previews: PreviewProvider {
     static var previews: some View {
         /*QueueView(showQueueTiming: .constant(false), selectedWhisper: Whisper(), timing: 2, randomTiming: false, shufflePlay: false, repeatPlay: false, duration: .constant(0.0), progress: .constant(0.0), timings: ["5 minutes", "15 minutes", "30 minutes", "1 hour", "1.5 hours", "2 hours"])

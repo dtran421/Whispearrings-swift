@@ -6,6 +6,12 @@
 //  Copyright © 2020 Whispearrings. All rights reserved.
 //
 
+// MARK: Update App Icons
+// TODO: Missing code annotations
+// TODO: Update whisperData.json (sound file) and sounds folder
+// TODO: Refactor and refine code
+// TODO: Add animations
+
 import UIKit
 import CoreData
 

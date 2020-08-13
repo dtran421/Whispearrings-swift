@@ -120,6 +120,7 @@ struct RecordView: View {
                 }
                 Spacer()
                 if hasRecorded {
+                    // TODO: Fix slider progress
                     Slider(value: $progress)
                         .padding([.leading, .trailing], 30)
                         .padding(.bottom, -10)
