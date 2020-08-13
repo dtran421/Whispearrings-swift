@@ -93,7 +93,7 @@ struct ContentView: View {
     var timings: Array<String> = ["5 minutes", "15 minutes", "30 minutes", "1 hour", "1.5 hours", "2 hours"]
     
     // TODO: change 0 and 1 indexes to correct times
-    var times: Dictionary<Int, Double> = [0: 10, 1: 20, 2: 1800, 3: 3600, 4: 5400, 5: 7200]
+    var times: Dictionary<Int, Double> = [0: 300, 1: 600, 2: 1800, 3: 3600, 4: 5400, 5: 7200]
     
     @State var duration: Double = 0.0
     @State var progress: Double = 0.0
