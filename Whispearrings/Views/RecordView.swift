@@ -210,6 +210,9 @@ struct RecordView: View {
                 updateProgress()
             })
         }
+        .onDisappear() {
+            paused = false
+        }
         .background(Color(red: 250 / 255, green: 235 / 255, blue: 235 / 255))
     }
 }
