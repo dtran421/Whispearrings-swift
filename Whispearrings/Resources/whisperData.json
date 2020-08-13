@@ -18,5 +18,61 @@
     {
         "value": "Drink water",
         "soundFile": "Drink Water"
+    },
+    {
+        "value": "All is well, Just breathe",
+        "soundFile": "All is well, Just breathe"
+    },
+    {
+        "value": "I can and I will",
+        "soundFile": "I can and I will"
+    },
+    {
+        "value": "If you change the way you look at things, the things you look at change",
+        "soundFile": " If you change the way you look at things, the things you look at change"
+    },
+    {
+        "value": "Reach for a better thought--JK",
+        "soundFile": "Reach for a better thought--JK"
+    },
+    {
+        "value": "Sit up straight",
+        "soundFile": "Sit up straight"
+    },
+    {
+        "value": "Today I choose to be happy",
+        "soundFile": "Today I choose to be happy"
+    },
+    {
+        "value": "You are loved",
+        "soundFile": "You are loved"
+    },
+    {
+        "value": "When you want only love you will see nothing else",
+        "soundFile": "When you want only love you will see nothing else"
+    },
+    {
+        "value": "You are smart2",
+        "soundFile": "You are smart2"
+    },
+    {
+        "value": "I am responisble for my happiness",
+        "soundFile": "I am responisble for my happiness"
+    },
+    {
+        "value": "Live in the present",
+        "soundFile": "Live in the present"
+    },
+    {
+        "value": "Stretch",
+        "soundFile": "Stretch"
+    },
+    {
+        "value": "You are enough",
+        "soundFile": "You are enough"
+    },
+    {
+        "value": "You cant go back and change the beginning",
+        "soundFile": "You cont go back and change the beginning"
     }
 ]
