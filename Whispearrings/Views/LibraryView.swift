@@ -9,6 +9,7 @@
 import SwiftUI
 
 struct LibraryView: View {
+    @Environment(\.managedObjectContext) var managedObjectContext
     @EnvironmentObject var whisperCollection: WhisperCollection
     
     @State var selectedFilter: String = "all"
@@ -59,40 +60,17 @@ struct LibraryView: View {
             .padding([.leading, .top], 15)
             Spacer()
             ScrollView (showsIndicators: false) {
-                ForEach (whisperCollection.whispers, id: \.id) { whisper in
-                    HStack {
+                VStack (spacing: 5) {
+                    ForEach (whisperCollection.whispers, id: \.id) { whisper in
                         if (selectedFilter == "my whispers" && whisper.type == "User") || (selectedFilter == "defaults" && whisper.type == "Default") || selectedFilter == "all" {
-                            if whisper.type == "Default" {
-                                Image("default")
-                                    .resizable()
-                                    .frame(width: 75, height: 75)
-                                    .padding([.leading, .vertical], 10)
-                            } else {
-                                Circle()
-                                    .fill(Color.gray)
-                                    .opacity(0.25)
-                                    .frame(width: 80, height: 80)
-                                    .padding([.leading, .vertical], 10)
-                                    .overlay(
-                                        Text("my whisper")
-                                            .font(.callout)
-                                            .multilineTextAlignment(.center)
-                                            .padding(.leading, 10)
-                                        , alignment: .center)
-                            }
-                            Text("\(whisper.value!)")
-                                .foregroundColor(.black)
-                                .font(.headline)
-                                .fontWeight(.medium)
-                            Spacer()
+                            LibraryCard(whisper: whisper, selectedFilter: selectedFilter)
+                                .environmentObject(whisperCollection)
                         }
                     }
-                    .background(Color.white)
                 }
                 Spacer()
             }
             .padding(.top, 5)
-            .padding(.horizontal, 15)
         }
         .background(Color(red: 250 / 255, green: 235 / 255, blue: 235 / 255))
     }

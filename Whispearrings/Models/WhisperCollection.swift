@@ -11,15 +11,19 @@ import SwiftUI
 import CoreData
 
 class WhisperCollection: ObservableObject {
+    var managedObjectContext: NSManagedObjectContext
     @Published var whispers: Array<Whisper> = []
     
     @Published var queue: Array<Whisper> = []
     
     @Published var times: Array<Time> = []
+    var timesUpdated: Bool = true
     
-    @Published var updated: Bool = true
+    init(newManagedObjectContext: NSManagedObjectContext) {
+        managedObjectContext = newManagedObjectContext
+    }
     
-    func fetchWhispers(managedObjectContext: NSManagedObjectContext) {
+    func fetchWhispers() {
         var output = Array<Whisper>()
         
         do {
@@ -31,7 +35,7 @@ class WhisperCollection: ObservableObject {
         whispers = output
     }
     
-    func fetchQueue(managedObjectContext: NSManagedObjectContext) {
+    func fetchQueue() {
         var output = Array<Whisper>()
         
         do {
@@ -45,7 +49,7 @@ class WhisperCollection: ObservableObject {
         queue = output
     }
     
-    func fetchTimes(managedObjectContext: NSManagedObjectContext) {
+    func fetchTimes() {
         var output = Array<Time>()
         
         do {
@@ -56,6 +60,6 @@ class WhisperCollection: ObservableObject {
         
         times = output
         
-        updated = false
+        timesUpdated = false
     }
 }

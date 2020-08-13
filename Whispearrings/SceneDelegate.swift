@@ -77,7 +77,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
     
-    var whisperCollection = WhisperCollection()
+    var whisperCollection: WhisperCollection!
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
@@ -86,9 +86,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let managedObjectContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         
-        whisperCollection.fetchWhispers(managedObjectContext: managedObjectContext)
-        whisperCollection.fetchQueue(managedObjectContext: managedObjectContext)
-        whisperCollection.fetchTimes(managedObjectContext: managedObjectContext)
+        whisperCollection = WhisperCollection(newManagedObjectContext: managedObjectContext)
+        
+        whisperCollection.fetchWhispers()
+        whisperCollection.fetchQueue()
+        whisperCollection.fetchTimes()
         
         var settings: QueueSettings!
             

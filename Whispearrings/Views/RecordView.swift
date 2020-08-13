@@ -13,15 +13,20 @@ class UserInput: ObservableObject {
     @Published var whisperValue = ""
 
     func clear() {
-        self.whisperValue = String(Self.clearCode)
+        whisperValue = String(UserInput.clearCode)
+        hideKeyboard()
+    }
+    
+    func hideKeyboard() {
+        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
     }
 }
 
 struct RecordView: View {
     @Environment(\.managedObjectContext) var managedObjectContext
     @EnvironmentObject var whisperCollection: WhisperCollection
+    @EnvironmentObject var audioRecorder: AudioRecorder
     
-    @ObservedObject var audioRecorder: AudioRecorder = AudioRecorder()
     @ObservedObject var audioPlayer: AudioPlayer = AudioPlayer()
     
     @ObservedObject var userInput = UserInput()
@@ -33,7 +38,9 @@ struct RecordView: View {
     @State var duration: Double = 0.0
     @State var progress: Double = 0.0
     
-    @State var mainTimer: Timer?
+    @State var mainTimer: Timer!
+    
+    @Binding var paused: Bool
     
     func updateProgress() {
         progress = (audioPlayer.currentTime / audioPlayer.duration)
@@ -51,9 +58,9 @@ struct RecordView: View {
                     }
                 }, label: {
                     Text("CANCEL")
-                        .foregroundColor(userInput.whisperValue == "" ? Color.gray : Color.black)
+                        .foregroundColor((userInput.whisperValue != "" || hasRecorded) ? Color.black : Color.gray)
                 })
-                .disabled(userInput.whisperValue == "")
+                .disabled(userInput.whisperValue == "" && !hasRecorded)
                 Spacer()
                 Button(action: {
                     whisper = Whisper(context: managedObjectContext)
@@ -70,14 +77,14 @@ struct RecordView: View {
                         userInput.clear()
                         hasRecorded = false
                         
-                        whisperCollection.fetchWhispers(managedObjectContext: managedObjectContext)
+                        whisperCollection.fetchWhispers()
                     } catch let error as NSError {
                         print("Could not save. \(error), \(error.userInfo)")
                     }
                 }, label: {
                     Text("SAVE")
                         .fontWeight(.bold)
-                        .foregroundColor(!hasRecorded || userInput.whisperValue == "" ? Color.gray : Color.black)
+                        .foregroundColor((!hasRecorded || userInput.whisperValue == "") ? Color.gray : Color.black)
                 })
                 .disabled(!hasRecorded || userInput.whisperValue == "")
             }
@@ -113,16 +120,19 @@ struct RecordView: View {
                 }
                 Spacer()
                 if hasRecorded {
-                    Slider(value: self.$progress)
-                        .padding([.leading, .bottom, .trailing], 20.0)
+                    Slider(value: $progress)
+                        .padding([.leading, .trailing], 30)
+                        .padding(.bottom, -10)
                         .accentColor(.black)
+                        .animation(.linear)
                     HStack {
                         Spacer()
                         let tempDuration = ceil(duration)
                         let tempSeconds = Int(tempDuration.truncatingRemainder(dividingBy: 60))
                         let stringSeconds = (tempSeconds < 10 ? "0\(tempSeconds)" : "\(tempSeconds)")
                         Text("\(Int(floor(tempDuration/60))):\(stringSeconds)")
-                            .font(.caption)
+                            .font(.body)
+                            .padding(.trailing, 30)
                     }
                     if !audioPlayer.isPlaying {
                         Button(action: {
@@ -163,10 +173,6 @@ struct RecordView: View {
                 
                     audioRecorder.startRecording()
                     
-                    mainTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { mainTimer in
-                            updateProgress()
-                    })
-                    
                     print("Start recording")
                 }) {
                     Image(systemName: "smallcircle.fill.circle.fill")
@@ -197,12 +203,18 @@ struct RecordView: View {
                 .padding(.top)
             }
         }
+        .onAppear() {
+            paused = true
+            mainTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { _ in
+                updateProgress()
+            })
+        }
         .background(Color(red: 250 / 255, green: 235 / 255, blue: 235 / 255))
     }
 }
 
 struct RecordView_Previews: PreviewProvider {
     static var previews: some View {
-        RecordView()
+        RecordView(paused: .constant(false))
     }
 }

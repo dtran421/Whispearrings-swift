@@ -31,22 +31,6 @@ struct QueueView: View {
     var timings: Array<String>
     
     @State var currTime: String = ""
-        
-    func getCurrTime(date: Date) -> String {
-        let calendar = Calendar.current
-        let formattedDate = calendar.dateComponents([.hour, .minute], from: date)
-        
-        let hour = String(String(String(formattedDate.hour ?? 0).reversed()).padding(toLength: 2, withPad: "0", startingAt: 0).reversed())
-        let minute = String(String(String(formattedDate.minute ?? 0).reversed()).padding(toLength: 2, withPad: "0", startingAt: 0).reversed())
-        
-        let output = "\(hour):\(minute)"
-        
-        if !audioPlayer.finishedPlaying {
-            updateProgress()
-        }
-        
-        return output
-    }
     
     func updateProgress() {
         progress = (audioPlayer.currentTime / audioPlayer.duration)
@@ -82,18 +66,21 @@ struct QueueView: View {
                 ScrollView (showsIndicators: false) {
                     ForEach (whisperCollection.queue, id: \.id) { whisper in WhisperCard(whisper: whisper, currPlaying: audioPlayer.currPlaying == whisper.id, showTimingSheet: $showTimingSheet, progress: $progress, duration: $duration)
                             .environment(\.managedObjectContext, managedObjectContext)
+                            .environmentObject(whisperCollection)
+                            .environmentObject(selectedWhisper)
+                            .environmentObject(audioPlayer)
                     }
                     Spacer()
                 }
             }
         }
-        .onDisappear {
+        /*.onDisappear {
             if audioPlayer.isPlaying {
                 audioPlayer.stop()
                 audioPlayer.currPlaying = nil
                 progress = 0.0
             }
-        }
+        }*/
         .background(Color(red: 250 / 255, green: 235 / 255, blue: 235 / 255))
         .sheet(isPresented: $showTimingSheet, content: {
             CustomTimingSheet(whisper: selectedWhisper.whisper, isPlaying: audioPlayer.currPlaying == selectedWhisper.whisper.id, showTimingSheet: $showTimingSheet, progress: $progress, duration: $duration, intervalActive: selectedWhisper.intervalMode, specificActive: selectedWhisper.specificMode, timeInterval: Int(selectedWhisper.timeInterval), specificTime: selectedWhisper.specificTime)

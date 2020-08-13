@@ -14,20 +14,32 @@ struct ContentView: View {
     @EnvironmentObject var whisperCollection: WhisperCollection
     
     @ObservedObject var audioPlayer: AudioPlayer = AudioPlayer()
+    @ObservedObject var audioRecorder: AudioRecorder = AudioRecorder()
     
     @State var mainTimer: Timer?
     @State var queueTimer: Timer?
     
+    @State var paused: Bool = false
+    
     @State var customTimes: Array<Time> = []
+    @State var timeToWhisper: Dictionary<Time, Whisper> = [Time: Whisper]()
+    @State var timeToTime: Dictionary<Time, String> = [Time: String]()
+    
+    @State var intervalChecked: String = ""
+    @State var intervalCurrTime: String = ""
     
     func generateTimes() {
         for time in whisperCollection.times {
             if time.intervalMode {
-                Timer.scheduledTimer(withTimeInterval: Double(time.timeInterval), repeats: true, block: { _ in
-                    playQueue.enqueue(time.whisper!)
+                Timer.scheduledTimer(withTimeInterval: Double(time.timeInterval + 1) * 60, repeats: true, block: { _ in
+                    if !paused {
+                        playQueue.enqueue(time.whisper!)
+                    }
                 })
             } else if time.specificMode {
                 customTimes.append(time)
+                timeToTime[time] = DateFormatter.localizedString(from: time.specificTime, dateStyle: .none, timeStyle: .short)
+                timeToWhisper[time] = time.whisper
             }
         }
     }
@@ -47,17 +59,13 @@ struct ContentView: View {
         
         if randomTiming {
             queueTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { queueTimer in
-                if randomTiming {
-                    if Int.random(in: 1 ..< 1000) % 10 == 1 {
-                        playQueue.enqueue((whisperQueue.dequeue())!)
-                    }
-                } else {
+                if !paused && Int.random(in: 1 ..< 1000) % 10 == 1 && !whisperQueue.isEmpty {
                     playQueue.enqueue((whisperQueue.dequeue())!)
                 }
             })
         } else {
             queueTimer = Timer.scheduledTimer(withTimeInterval: times[Int(timing)]!, repeats: true, block: { queueTimer in
-                if whisperQueue.peek != nil {
+                if !paused && !whisperQueue.isEmpty {
                     playQueue.enqueue(whisperQueue.dequeue()!)
                 }
             })
@@ -67,7 +75,8 @@ struct ContentView: View {
     }
     
     @State var playQueue: WhisperQueue<Whisper> = WhisperQueue<Whisper>()
-    @State var checked: String = ""
+    @State var mainChecked: String = ""
+    @State var mainCurrTime: String = ""
     
     func playFromQueue() {
         if !audioPlayer.finishedPlaying {
@@ -109,27 +118,24 @@ struct ContentView: View {
                 if showQueueTiming {
                     QueueTimingView(showQueueTiming: $showQueueTiming, timing: $timing, randomTiming: $randomTiming, shufflePlay: $shufflePlay, repeatPlay: $repeatPlay, timings: timings)
                         .onDisappear() {
-                            if timing != settingsTracker.initialTiming && !randomTiming {
-                                queueTimer = Timer.scheduledTimer(withTimeInterval: times[Int(timing)]!, repeats: true, block: { queueTimer in
-                                    playFromQueue()
-                                })
-                                print("timing changed!")
-                            }
-                            if randomTiming != settingsTracker.initialRandomTiming {
-                                queueTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { queueTimer in
-                                    if randomTiming {
-                                        if Int.random(in: 1 ..< 1000) % 10 == 1 {
-                                            playFromQueue()
-                                        }
-                                    } else {
-                                        playFromQueue()
-                                    }
-                                })
-                                print("random timing changed!")
-                            }
                             if shufflePlay != settingsTracker.initialShufflePlay {
                                 generateQueue()
                                 print("shuffle play changed!")
+                            }
+                            if randomTiming != settingsTracker.initialRandomTiming && randomTiming {
+                                queueTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { queueTimer in
+                                    if !paused && Int.random(in: 1 ..< 1000) % 10 == 1 && !whisperQueue.isEmpty {
+                                        playQueue.enqueue(whisperQueue.dequeue()!)
+                                    }
+                                })
+                                print("random timing changed!")
+                            } else if timing != settingsTracker.initialTiming && !randomTiming {
+                                queueTimer = Timer.scheduledTimer(withTimeInterval: times[Int(timing)]!, repeats: true, block: { queueTimer in
+                                    if !paused && !whisperQueue.isEmpty {
+                                        playQueue.enqueue(whisperQueue.dequeue()!)
+                                    }
+                                })
+                                print("timing changed!")
                             }
                             
                             settingsTracker.reset(newTiming: timing, newRandomTiming: randomTiming, newShufflePlay: shufflePlay, newRepeatPlay: repeatPlay)
@@ -148,6 +154,7 @@ struct ContentView: View {
                 }
                 .tag(0)
             LibraryView()
+                .environment(\.managedObjectContext, managedObjectContext)
                 .tabItem {
                     VStack {
                         Image(systemName: "headphones")
@@ -165,8 +172,10 @@ struct ContentView: View {
                     }
                 }
                 .tag(2)
-            RecordView()
+            RecordView(paused: $paused)
                 .environment(\.managedObjectContext, managedObjectContext)
+                .environmentObject(whisperCollection)
+                .environmentObject(audioRecorder)
                 .tabItem {
                     VStack {
                         Image(systemName: "mic.fill")
@@ -185,31 +194,28 @@ struct ContentView: View {
                         generateQueue()
                     }
                     
-                    if !whisperCollection.updated {
+                    if !whisperCollection.timesUpdated {
                         generateTimes()
-                        whisperCollection.updated = true
+                        whisperCollection.timesUpdated = true
                     }
                     
-                    let currTime = DateFormatter.localizedString(from: Date(), dateStyle: .none, timeStyle: .short)
-                    if currTime != checked {
-                        print(currTime, checked)
+                    mainCurrTime = DateFormatter.localizedString(from: Date(), dateStyle: .none, timeStyle: .short)
+                    if mainCurrTime != mainChecked {
                         for time in customTimes {
-                            print(time)
-                            let customTime = DateFormatter.localizedString(from: time.specificTime, dateStyle: .none, timeStyle: .short)
-                            print(currTime, customTime)
-                            if currTime == customTime {
-                                playQueue.enqueue(time.whisper!)
+                            if !paused && mainCurrTime == timeToTime[time] {
+                                playQueue.enqueue(timeToWhisper[time]!)
                             }
                         }
                     }
-                    checked = currTime
+                    mainChecked = mainCurrTime
                     
-                    if playQueue.peek != nil && !audioPlayer.isPlaying {
+                    if !paused && !playQueue.isEmpty && !audioPlayer.isPlaying {
                         audioPlayer.playSound(whisper: playQueue.dequeue()!)
                     }
                 })
                 generateQueue()
             }
+            paused = false
         }
     }
 }
@@ -218,6 +224,6 @@ struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
                 
-        ContentView(settingsTracker: SettingsTracker(timing: 0, randomTiming: false, shufflePlay: false, repeatPlay: false), timing: 0, randomTiming: false, shufflePlay: false, repeatPlay: false).environment(\.managedObjectContext, context).environmentObject(WhisperCollection())
+        ContentView(settingsTracker: SettingsTracker(timing: 0, randomTiming: false, shufflePlay: false, repeatPlay: false), timing: 0, randomTiming: false, shufflePlay: false, repeatPlay: false).environment(\.managedObjectContext, context).environmentObject(WhisperCollection(newManagedObjectContext: context))
     }
 }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F52FB94B24E4E5C4001975E7 /* LibraryCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52FB94A24E4E5C4001975E7 /* LibraryCard.swift */; };
 		F5A4058524AFC73900B9520A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F5A4058424AFC73900B9520A /* Preview Assets.xcassets */; };
 		F5C9B5E524DC776F00817901 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C9B5E324DC776F00817901 /* SceneDelegate.swift */; };
 		F5C9B5E624DC776F00817901 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C9B5E424DC776F00817901 /* AppDelegate.swift */; };
@@ -62,6 +63,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F52FB94A24E4E5C4001975E7 /* LibraryCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryCard.swift; sourceTree = "<group>"; };
 		F5A4057824AFC73400B9520A /* Whispearrings.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Whispearrings.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5A4058424AFC73900B9520A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		F5A4058924AFC73900B9520A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -217,6 +219,7 @@
 				F5C9B69F24E0DEF200817901 /* CustomTimingSheet.swift */,
 				F5C9B63024DC78D900817901 /* QueueTimingView.swift */,
 				F5C9B62A24DC78D800817901 /* WhisperCard.swift */,
+				F52FB94A24E4E5C4001975E7 /* LibraryCard.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -371,6 +374,7 @@
 				F5C9B6A024E0DEF300817901 /* CustomTimingSheet.swift in Sources */,
 				F5C9B5E724DC776F00817901 /* ContentView.swift in Sources */,
 				F5C9B63724DC78D900817901 /* QueueTimingView.swift in Sources */,
+				F52FB94B24E4E5C4001975E7 /* LibraryCard.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

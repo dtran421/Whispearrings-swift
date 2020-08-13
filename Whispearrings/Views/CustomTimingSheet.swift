@@ -70,8 +70,7 @@ struct CustomTimingSheet: View {
                     } catch let error as NSError {
                         print("Could not save. \(error), \(error.userInfo)")
                     }
-                    
-                    whisperCollection.fetchTimes(managedObjectContext: managedObjectContext)
+                    whisperCollection.fetchTimes()
                     
                     showTimingSheet.toggle()
                 }, label: {

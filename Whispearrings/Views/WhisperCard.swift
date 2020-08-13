@@ -12,6 +12,7 @@ import CoreData
 
 struct WhisperCard: View {
     @Environment(\.managedObjectContext) var managedObjectContext
+    @EnvironmentObject var whisperCollection: WhisperCollection
     @EnvironmentObject var selectedWhisper: SelectedWhisper
     @EnvironmentObject var audioPlayer: AudioPlayer
 
@@ -54,6 +55,10 @@ struct WhisperCard: View {
                     } catch let error as NSError {
                         print("Could not save. \(error), \(error.userInfo)")
                     }
+                    
+                    whisperCollection.fetchQueue()
+                    
+                    offset = CGFloat.zero
                 }, label: {
                     Text("Remove from Queue")
                         .font(.headline)
